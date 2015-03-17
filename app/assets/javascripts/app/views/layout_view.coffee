@@ -7,9 +7,13 @@ This view is also responsible for the "SAVE" button functionality.
 class App.views.LayoutView extends Backbone.View
   events:
     'click .save-button': 'saveAllItems'
+    'input .search':      'search'
 
   saveAllItems: () ->
-    Backbone.Events.trigger('saveAllItems')
+    Backbone.Events.trigger 'saveAllItems'
+
+  search: (e) ->
+    Backbone.Events.trigger 'filterItems', $(e.currentTarget).val()
 
   initialize: (opts) ->
     @items = new App.collections.Items(opts.data)

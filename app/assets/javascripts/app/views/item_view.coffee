@@ -18,6 +18,7 @@ class App.views.ItemView extends Backbone.View
   initialize: () ->
     @children = new App.collections.Items(@model.get('children'))
     @state    = collapsed: false
+    Backbone.Events.bind 'filterItems', (s) => @hideIfNotMatched(s)
 
     Backbone.Events.bind 'itemChangedPosition', () =>
       @model.set
@@ -32,21 +33,30 @@ class App.views.ItemView extends Backbone.View
     @state.collapsed = !@state.collapsed
     @render()
 
+  # Careful! The title that was edited might be the title of one of my children
   updateTitle: (e) ->
     title = $(e.currentTarget)
-    # Careful! The title that was edited might be the title of one of my children
     if title.parent().data('id') == @model.get('id')
       @model.set('title', title.text())
 
+  # Same as above
   updateContent: (e) ->
     content = $(e.currentTarget)
-    # Same as above
     if content.parent().data('id') == @model.get('id')
       @model.set('content', content.text())
 
+  hideIfNotMatched: (searchText) ->
+    @$('.title, .content').show()
+    searchText = searchText.toLowerCase()
+    title = @model.get('title').toLowerCase()
+    content = @model.get('content').toLowerCase()
+
+    titleMatches   = title.indexOf(searchText)   != -1
+    contentMatches = content.indexOf(searchText) != -1
+    @$('.title, .content').hide() unless contentMatches or titleMatches
+
   render: ->
     @$el.html @template(@model.attributes)
-    # As much as I hate doing this, it's necessary for drag and drop.
     @$el.attr "data-id", @model.get('id')
     @renderChildren() unless @state.collapsed
     this
