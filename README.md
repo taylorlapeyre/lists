@@ -41,4 +41,4 @@ Fork this repo in github and send us the link to your project once you are done.
 
 #### Getting Started
 
-You will need to have a working Rails environment with sqlite. Once you have cloned the repo, run `rake db:setup`. If you run into any issues getting started, email us and we can help.
+You will need to have a working Rails environment with sqlite. Once you have cloned the repo, run `bundle install` and `rake db:setup`. If you run into any issues getting started, email us and we can help.
