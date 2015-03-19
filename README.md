@@ -3,7 +3,7 @@
 This repo contains the scaffolding of a simple Rails list management application.
 It's built with Rails and Backbone, much like Everlane's website.
 
-This exercise is designed to simulate as closely as possible, the kind of work we do at Everlane.
+This exercise is designed to simulate, as closely as possible, the kind of work we do at Everlane.
 
 ### Description
 
@@ -20,7 +20,8 @@ Initial feature list:
 - the user can view fully nested items
 - items maintain an order defined in the data model (add a position column)
 - the user can collapse the nested item views (like closing a folder in a file explorer)
-- the user can edit the title and content values of each item and save the state to the database
+- the user can edit the title and content values of each item
+- the user can click the big save button in the corner and save the state of the app to the database
 - the user can drag and drop to reorder the items within a list
 - the user can drag and drop to nest an item under a different list
 
