@@ -11,7 +11,7 @@ The Lists app allows the user to view and edit nested lists of content.
 
 Initial feature list:
 - the user can view root level items
-- that's it
+- that's it!
 
 **Implement the following feature set by extending the codebase.**
 
